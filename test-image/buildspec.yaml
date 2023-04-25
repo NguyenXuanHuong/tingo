@@ -8,6 +8,7 @@ phases:
       # Docker Image Tag with Date Time & Code Buiild Resolved Source Version
       - TAG="$(date +%Y-%m-%d.%H.%M.%S).$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
       # Verify AWS CLI Version
+      - echo $TAG
       - echo "Verify AWS CLI Version..."
       - aws --version
       # Login to ECR Registry for docker to push the image to ECR Repository
@@ -22,7 +23,7 @@ phases:
   build:
     commands:
       # Build Docker Imaget
-      - now=`date`
+      - now=$(date)
       - echo "Build started on $now"
       - echo "Building the Docker image..."
       - docker build --tag $REPOSITORY_URI:latest .
