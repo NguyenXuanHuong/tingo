@@ -15,6 +15,7 @@ phases:
       - $(aws ecr get-login --no-include-email)
       # Update Kube config Home Directory
       - export KUBECONFIG=$HOME/.kube/config
+      - cd test-image
       - mvn clean install
       - EKS_CLUSTER_NAME=tingo-dev-cluster
       - REPOSITORY_URI=096527414900.dkr.ecr.ap-southeast-1.amazonaws.com/my-ecr-repo
@@ -24,7 +25,6 @@ phases:
       - now=`date`
       - echo "Build started on $now"
       - echo "Building the Docker image..."
-      - cd test-image
       - docker build --tag $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$TAG .
   post_build:
