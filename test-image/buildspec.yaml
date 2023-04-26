@@ -18,11 +18,8 @@ phases:
       - export KUBECONFIG=$HOME/.kube/config
       - cd test-image
       - mvn clean install
-      - EKS_CLUSTER_NAME=tingo-dev-cluster
-      - REPOSITORY_URI=096527414900.dkr.ecr.ap-southeast-1.amazonaws.com/my-ecr-repo
-      - CONTAINER_NAME=usermgmt-restapp
-      - DEPLOYMENT_NAME=usermgmt-microservice
-      - EKS_KUBECTL_ROLE_ARN=arn:aws:iam::096527414900:role/EksCodeBuildKubectlRole
+      - REPOSITORY_URI=${ACCOUNT_ID}.dkr.ecr.ap-southeast-1.amazonaws.com/$REPOSITORY_NAME
+      - EKS_KUBECTL_ROLE_ARN=arn:aws:iam::${ACCOUNT_ID}:role/${EKS_KUBECTL_ROLE_NAME}
   build:
     commands:
       # Build Docker Imaget
