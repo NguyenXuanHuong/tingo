@@ -11,4 +11,9 @@ public class TestController {
     private String test1() {
         return "success1";
     }
+
+    @GetMapping("test2")
+    private String test1() {
+        return "success2";
+    }
 }
