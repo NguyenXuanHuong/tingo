@@ -13,7 +13,7 @@ public class TestController {
     }
 
     @GetMapping("test2")
-    private String test1() {
+    private String test2() {
         return "success2";
     }
 }
