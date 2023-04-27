@@ -14,6 +14,6 @@ public class TestController {
 
     @GetMapping("test2")
     private String test2() {
-        return "success2";
+        return "nam dep trai";
     }
 }
